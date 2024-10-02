@@ -1,0 +1,21 @@
+{
+    "gen_templates_opts": {
+        "version": "v1",
+        "object_dataset": "lmo",
+        "object_lids": [1,5,6,8,9,10,11,12],
+        "num_viewspheres": 1,
+        "min_num_viewpoints": 57,
+        "num_inplane_rotations": 14,
+        "images_per_view": 1,
+        "max_num_triangles": 20000,
+        "back_face_culling": false,
+        "texture_size": [1024, 1024],
+        "ssaa_factor": 4.0,
+        "background_type": "black",
+        "light_type": "multi_directional",
+        "features_patch_size": 14,
+        "crop": true,
+        "crop_rel_pad": 0.2,
+        "crop_size": [420, 420]
+    }
+}

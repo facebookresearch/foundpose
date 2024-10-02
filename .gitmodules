@@ -1,0 +1,6 @@
+[submodule "external/dinov2"]
+	path = external/dinov2
+	url = https://github.com/facebookresearch/dinov2.git
+[submodule "external/bop_toolkit"]
+	path = external/bop_toolkit
+	url = https://github.com/thodan/bop_toolkit.git

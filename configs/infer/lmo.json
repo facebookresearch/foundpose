@@ -1,0 +1,25 @@
+{
+    "infer_opts": {
+        "version": "v1",
+        "object_dataset": "lmo",
+        "repre_version": "v1",
+        "crop_rel_pad": 0.2,
+        "crop_size": [
+            420,
+            420
+        ],
+        "use_detections": true,
+        "extractor_name": "dinov2_version=vits14-reg_stride=14_facet=token_layer=9_logbin=0_norm=1",
+        "grid_cell_size": 14.0,
+        "match_template_type": "tfidf",
+        "match_top_n_templates": 5,
+        "match_feat_matching_type": "cyclic_buddies",
+        "match_top_k_buddies": 300,
+        "pnp_type": "opencv",
+        "pnp_ransac_iter": 400,
+        "pnp_inlier_thresh": 10.0,
+        "final_pose_type": "best_coarse",
+        "num_preds_factor": 1,
+        "vis_results": true
+    }
+}
