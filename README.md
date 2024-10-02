@@ -19,6 +19,8 @@
     <a href="https://arxiv.org/abs/2311.18809" align="center">Arxiv</a>
     ·
     <a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/03742.pdf" align="center">Publication</a>
+    ·
+    <a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/03742-supp.pdf" align="center">Supplementary</a>
     
   </h3>
 </p>
