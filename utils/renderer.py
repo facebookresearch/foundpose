@@ -64,7 +64,7 @@ class PyrenderRasterizer(renderer_base.RendererBase):
 
         # Load the object model.
         object_model_path = self.model_path.format(obj_id=obj_id)
-        trimesh_model = trimesh.load(model_path)
+        trimesh_model = trimesh.load(object_model_path)
         trimesh_model.vertices = trimesh_model.vertices/1000.0
 
         # Color the model.
