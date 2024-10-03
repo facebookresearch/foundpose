@@ -191,7 +191,7 @@ If you find this work useful in your research, please cite
 
 ```
 @article{
-  ornek2023foundpose,
+  ornek2024foundpose,
   author    = {{\"O}rnek, Evin P{\i}nar and Labb\'e, Yann and Tekin, Bugra and Ma, Lingni and Keskin, Cem and Forster, Christian and Hoda{\v{n}}, Tom{\'a}{\v{s}}},
   title     = {FoundPose: Unseen Object Pose Estimation with Foundation Features}, 
   journal   = {European Conference on Computer Vision (ECCV)},
