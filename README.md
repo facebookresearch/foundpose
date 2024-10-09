@@ -37,19 +37,19 @@ Our training-free method does not require the release of any weights. In this re
 
 ## Table of Contents
 
-0. [Setup](#setup)
+- [Setup](#setup)
    - [Environment](#environment)
    - [Dataset](#dataset)
    - [Dataset Directory Structure](#dataset-directory-structure)
-1. [FoundPose](#foundpose)
+- [FoundPose](#foundpose)
    - [1. Render the Templates](#render-the-templates)
    - [2. Create Object Representation](#create-object-representation)
    - [3. Run Pose Estimation](#run-pose-estimation)
    - [4. Evaluation](#evaluation)
-2. [Acknowledgements](#acknowledgements)
-3. [License](#license)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
-## 0. Setup <a name="setup"></a>
+## Setup <a name="setup"></a>
 
 ### Environment <a name="environment"></a>
 
@@ -133,9 +133,9 @@ $OUTPUT_PATH/
 └── ...
 ```
 
-## 1. FoundPose <a name="foundpose"></a>
+## Using FoundPose <a name="foundpose"></a>
 
-### 1. Render the Templates <a name="render-the-templates"></a>
+### 1. Generating templates <a name="render-the-templates"></a>
 
 You can render the templates using the following script and the provided configuration file (e.g., for the LM-O dataset). To use other datasets, create a similar configuration file accordingly. 
 
@@ -149,7 +149,7 @@ This script generates images, masks, depth maps, and camera parameters in the $o
 Note: We provide the generated object templates for LM-O here (link to be provided).
 
 
-### 2. Create Object Representation <a name="create-object-representation"></a>
+### 2. Generating object representation <a name="create-object-representation"></a>
 
 You can create the object representation using the following script and configuration file (e.g., for the LM-O dataset):
 ```
@@ -158,7 +158,7 @@ python scripts/gen_repre.py --opts-path configs/gen_repre/lmo.json
 
 Note: We provide the generated object representations for LM-O here (link to be provided).
 
-### 3. Run Pose Estimation <a name="run-pose-estimation"></a>
+### 3. Inference <a name="run-pose-estimation"></a>
 
 You can run coarse-level pose estimation for the LM-O dataset using the following script and configuration file:  
 ```
@@ -185,7 +185,7 @@ Results using the DINOv2 ViT-S Model:
 | TUD-L     | 42.7          | 40.7          |
 
 
-## 3. Acknowledgements <a name="acknowledgements"></a>
+## Acknowledgements <a name="acknowledgements"></a>
 
 If you find this work useful in your research, please cite
 
@@ -202,7 +202,7 @@ If you find this work useful in your research, please cite
 This repository relies on external codebases of [DINOv2](https://github.com/facebookresearch/dinov2) and [BOP Toolkit](https://github.com/thodan/bop_toolkit/tree/master). We thank the authors for making their code available.
 
 
-## 4. License <a name="license"></a>
+## License <a name="license"></a>
 
 This project is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](http://creativecommons.org/licenses/by-nc/4.0/). [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc/4.0/)
 
