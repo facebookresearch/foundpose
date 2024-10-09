@@ -41,7 +41,7 @@ Our training-free method does not require the release of any weights. In this re
    - [Environment](#environment)
    - [Dataset](#dataset)
    - [Dataset Directory Structure](#dataset-directory-structure)
-- [FoundPose](#foundpose)
+- [Using FoundPose](#foundpose)
    - [1. Render the Templates](#render-the-templates)
    - [2. Create Object Representation](#create-object-representation)
    - [3. Run Pose Estimation](#run-pose-estimation)
