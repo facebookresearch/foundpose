@@ -146,7 +146,7 @@ python scripts/gen_templates.py --opts-path configs/gen_templates/lmo.json
 ```
 This script generates images, masks, depth maps, and camera parameters in the $output_path.
 
-Note: We provide the generated object templates for LM-O here (link to be provided).
+Note: We provide the generated object templates for LM-O [here](https://huggingface.co/datasets/evinpinar/foundpose/resolve/main/templates.zip).
 
 
 ### 2. Generating object representation <a name="create-object-representation"></a>
@@ -156,7 +156,7 @@ You can create the object representation using the following script and configur
 python scripts/gen_repre.py --opts-path configs/gen_repre/lmo.json
 ```
 
-Note: We provide the generated object representations for LM-O here (link to be provided).
+Note: We provide the generated object representations for LM-O [here](https://huggingface.co/datasets/evinpinar/foundpose/resolve/main/object_repre.zip).
 
 ### 3. Inference <a name="run-pose-estimation"></a>
 
@@ -166,7 +166,7 @@ python scripts/infer.py --opts-path configs/infer/lmo.json
 ```
 This will generate output poses in the BOP format.
 
-Note: We provide pose estimations based on the provided representations for LM-O here (link to be provided).
+Note: We provide pose estimations based on the provided representations for LM-O [here](https://huggingface.co/datasets/evinpinar/foundpose/resolve/main/inference.zip).
 
 ### 4. Evaluation <a name="evaluation"></a>
 
