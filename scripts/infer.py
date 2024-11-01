@@ -221,7 +221,7 @@ def infer(opts: InferOpts) -> None:
             visual_words_knn_index.fit(repre.feat_cluster_centroids)
 
         # Build per-template KNN index with features from that template.
-        template_knn_indices = []`
+        template_knn_indices = []
         if opts.match_feat_matching_type == "cyclic_buddies":
             logger.info("Building per-template KNN indices...")
             for template_id in range(len(repre.template_cameras_cam_from_model)):

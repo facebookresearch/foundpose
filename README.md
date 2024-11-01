@@ -101,7 +101,7 @@ Update the ```output_path``` in the BOP config file located at ```external/bop_t
 
 Download the default segmentations created for Task 4 at BOP 2023 Challenge [from here](https://bop.felk.cvut.cz/media/data/bop_datasets_extra/bop23_default_detections_for_task4.zip) which were created by [CNOS](https://bop.felk.cvut.cz/method_info/370/). Place the downloaded files under: 
 ```
-{$output_path}/detections/cnos-fastsam/cnos-fastsam_{dataset}_test.json
+{bop_datasets}/detections/cnos-fastsam/cnos-fastsam_{dataset}_test.json
 ```
 Replace ```{dataset}``` with the name of the dataset you are using (e.g., lmo for LM-O).
 
@@ -118,13 +118,8 @@ bop_datasets/               # This is your $BOP_PATH
 │   ├── models_eval/        # Simplified models for evaluation
 │   ├── test/               # Test images and annotations
 │   └── ...
-└── ...
-```
-
-The detections directory should be placed under your output_path as configured in ```external/bop_toolkit/bop_toolkit_lib/config.py```:
-
-```bash
-$OUTPUT_PATH/
+├── tudl/ 
+├── ...
 ├── detections/
 │   └── cnos-fastsam/
 │       ├── cnos-fastsam_lmo_test.json

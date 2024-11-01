@@ -101,7 +101,7 @@ def calc_tfidf_descriptors(
     )
 
     # Build a KNN index for the visual words.
-    feat_knn_index = knn_util.KNN(k=tfidf_knn_k, metric="l2", use_gpu=False) #True if device == "cuda" else False)
+    feat_knn_index = knn_util.KNN(k=tfidf_knn_k, metric="l2")
     feat_knn_index.fit(feat_words.cpu())
 
     # Calculate the tf-idf descriptor for each template.

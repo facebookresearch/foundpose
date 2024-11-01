@@ -13,7 +13,7 @@ from utils import misc, logging, json_util
 logger: logging.Logger = logging.get_logger()
 
 # Load the estimated poses from the json file
-object_dataset = "tudl"
+object_dataset = "lmo"
 version = "v1"
 object_lids = None
 
