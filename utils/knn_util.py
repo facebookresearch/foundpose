@@ -19,8 +19,6 @@ class KNN:
         k: int = 1,
         metric: str = "l2",
         radius: Optional[float] = None,
-        use_gpu: bool = True,
-        gpu_id: int = 0,
         res: Optional[Any] = None,
     ) -> None:
         """
@@ -32,13 +30,9 @@ class KNN:
         self.index: Any = None 
         self.k: int = k
         self.metric: str = metric
-        self.use_gpu: bool = use_gpu
-        self.gpu_id: int = gpu_id
         self.radius: Optional[float] = radius
         self.res: Optional[Any] = res 
 
-        if self.res is None and use_gpu is True:
-            self.res = faiss.StandardGpuResources() 
 
     def fit(self, data: torch.Tensor) -> None:
         """Creates index from provided vectors.
@@ -51,15 +45,12 @@ class KNN:
 
         if self.metric == "l2":
             self.index = faiss.IndexFlatL2(dimensions)
-            if self.use_gpu:
-                self.index = faiss.index_cpu_to_gpu(self.res, self.gpu_id, self.index)
+            if data.is_cuda:
+                data = data.cpu()
             self.index.add(data)
 
         elif self.metric == "cosine":
             self.index = faiss.IndexFlatIP(dimensions)
-
-            if self.use_gpu:
-                self.index = faiss.index_cpu_to_gpu(self.res, self.gpu_id, self.index)
 
             # Normalization.
             data = data / torch.linalg.norm(data, dim=1, keepdim=True)
@@ -78,6 +69,13 @@ class KNN:
         Returns:
             Distances and indices of the k nearest neighbors.
         """
+
+        is_cuda = False
+        device=None
+        if data.is_cuda:
+            device = data.get_device()
+            is_cuda = True
+            data = data.cpu()
 
         if self.metric == "l2":
             if self.radius is None:
@@ -100,14 +98,14 @@ class KNN:
         else:
             raise ValueError(f"Metric {self.metric} is not supported.")
 
+        if is_cuda:
+            distances = distances.to(device)
+            indices = indices.to(device)
+
         return distances, indices
 
     def serialize_index(self) -> None:
-        if self.use_gpu:
-            self.index = faiss.index_gpu_to_cpu(self.index)
         self.index = faiss.serialize_index(self.index)
 
     def deserialize_index(self) -> None:
         self.index = faiss.deserialize_index(self.index)
-        if self.use_gpu:
-            self.index = faiss.index_cpu_to_gpu(self.res, self.gpu_id, self.index)

@@ -199,6 +199,7 @@ def synthesize_templates(opts: GenTemplatesOpts) -> None:
             bop_config.output_path,
             dataset_torch_relpath,
         )
+        print("output_dir: ", bop_config.output_path)
         if os.path.exists(output_dir) and not opts.overwrite:
             raise ValueError(f"Output directory already exists: {output_dir}")
         os.makedirs(output_dir, exist_ok=True)

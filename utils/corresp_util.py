@@ -13,7 +13,6 @@ from utils import (
 
 logger: logging.Logger = logging.get_logger()
 
-
 def convert_px_indices_to_im_coords(
     px_indices: torch.Tensor, scale: float = 1.0
 ) -> torch.Tensor:
@@ -80,7 +79,6 @@ def establish_correspondences(
     top_k_buddies: int,
     visual_words_knn_index: Optional[knn_util.KNN] = None,
     template_knn_indices: Optional[List[knn_util.KNN]] = None,
-    faiss_use_gpu: Optional[bool] = False,
     debug: bool = False,
 ) -> List[Dict]:
     """Establishes 2D-3D correspondences by matching image and object features."""
@@ -100,7 +98,7 @@ def establish_correspondences(
     # Build knn index for query features.
     query_knn_index = None
     if feat_matching_type == "cyclic_buddies":
-        query_knn_index = knn_util.KNN(k=1, metric="l2", use_gpu=faiss_use_gpu)
+        query_knn_index = knn_util.KNN(k=1, metric="l2")
         query_knn_index.fit(query_features)
 
     # Establish correspondences for each dominant template separately.

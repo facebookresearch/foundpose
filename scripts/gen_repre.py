@@ -247,7 +247,7 @@ def generate_repre(
     # Prepare a feature extractor.
     if extractor is None:
         extractor = feature_util.make_feature_extractor(opts.extractor_name)
-        extractor.to(device)
+    extractor.to(device)
 
     timer.elapsed("Time for preparation")
     timer.start()
@@ -390,6 +390,7 @@ def generate_repre_from_list(opts: GenRepreOpts) -> None:
 
     # Prepare a device.
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    print("Device: ", device)
 
     # Process each image separately.
     for object_lid in object_lids:

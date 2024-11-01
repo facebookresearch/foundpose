@@ -11,14 +11,12 @@ import time
 from typing import List, NamedTuple, Optional, Tuple
 
 import cv2
-import faiss
 
 import numpy as np
 
 import torch
 
 from utils.misc import array_to_tensor, tensor_to_array, tensors_to_arrays
-
 
 from bop_toolkit_lib import inout, dataset_params
 import bop_toolkit_lib.config as bop_config
@@ -218,14 +216,12 @@ def infer(opts: InferOpts) -> None:
         if opts.match_template_type == "tfidf":
             visual_words_knn_index = knn_util.KNN(
                 k=repre.template_desc_opts.tfidf_knn_k,
-                metric=repre.template_desc_opts.tfidf_knn_metric,
-                use_gpu=True if device == "cuda" else False
+                metric=repre.template_desc_opts.tfidf_knn_metric
             )
             visual_words_knn_index.fit(repre.feat_cluster_centroids)
 
         # Build per-template KNN index with features from that template.
-        template_knn_indices = []
-        faiss_use_gpu = True if device == "cuda" else False
+        template_knn_indices = []`
         if opts.match_feat_matching_type == "cyclic_buddies":
             logger.info("Building per-template KNN indices...")
             for template_id in range(len(repre.template_cameras_cam_from_model)):
@@ -236,8 +232,8 @@ def infer(opts: InferOpts) -> None:
                 template_feats = repre.feat_vectors[tpl_feat_ids]
 
                 # Build knn index for object features.
-                template_knn_index = knn_util.KNN(k=1, metric="l2", use_gpu=faiss_use_gpu)
-                template_knn_index.fit(template_feats)
+                template_knn_index = knn_util.KNN(k=1, metric="l2")
+                template_knn_index.fit(template_feats.cpu())
                 template_knn_indices.append(template_knn_index)
             logger.info("Per-template KNN indices built.")
 
@@ -541,7 +537,6 @@ def infer(opts: InferOpts) -> None:
                         top_n_templates=opts.match_top_n_templates,
                         top_k_buddies=opts.match_top_k_buddies,
                         visual_words_knn_index=visual_words_knn_index,
-                        faiss_use_gpu=faiss_use_gpu,
                         debug=opts.debug,
                     )
 

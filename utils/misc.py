@@ -3,12 +3,14 @@
 """Miscellaneous functions."""
 
 import dataclasses
+from dataclasses import asdict
 import math
 import time
 import cv2
 import uuid
 
 from typing import Any, Dict, List, Optional, Tuple, Type, Union, Mapping
+from collections import namedtuple
 
 import numpy as np
 from PIL import Image

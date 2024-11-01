@@ -13,20 +13,11 @@ from utils import dinov2_utils
 
 logger: logging.Logger = logging.get_logger()
 
-class DummyExtractor(torch.nn.Module):
-    def __init__(self) -> None:
-        super().__init__()
-        self.model_type = "gpu"
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-
-        return {"feature_maps": torch.zeros((1,30,30,384))}
 
 def make_feature_extractor(model_name: str) -> torch.nn.Module:
 
     if model_name.startswith("dinov2_"):
         return dinov2_utils.DinoFeatureExtractor(model_name=model_name)
-        # return DummyExtractor()
     else:
         raise NotImplementedError(model_name)
 

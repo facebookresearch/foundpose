@@ -6,7 +6,6 @@ import torch
 
 from utils import knn_util, repre_util, logging, misc
 
-
 logger: logging.Logger = logging.get_logger()
 
 
@@ -14,7 +13,6 @@ def find_nearest_object_features(
     query_features: torch.Tensor,
     knn_index: knn_util.KNN,
 ) -> Tuple[torch.Tensor, torch.Tensor]:
-
     # Find the nearest reference feature for each query feature.
     nn_dists, nn_ids = knn_index.search(query_features)
 
@@ -90,7 +88,7 @@ def calc_tfidf_descriptors(
     Ref: https://www.di.ens.fr/~josef/publications/torii13.pdf
     """
 
-    device = feat_words.device
+    device = feat_words.device.type
 
     # Calculate the idf terms (inverted document frequency).
     word_occurances = torch.zeros(len(feat_words), dtype=torch.int64, device=device)
@@ -103,8 +101,8 @@ def calc_tfidf_descriptors(
     )
 
     # Build a KNN index for the visual words.
-    feat_knn_index = knn_util.KNN(k=tfidf_knn_k, metric="l2", use_gpu=True if device == "cuda" else False)
-    feat_knn_index.fit(feat_words)
+    feat_knn_index = knn_util.KNN(k=tfidf_knn_k, metric="l2", use_gpu=False) #True if device == "cuda" else False)
+    feat_knn_index.fit(feat_words.cpu())
 
     # Calculate the tf-idf descriptor for each template.
     tfidf_descs = []

@@ -29,7 +29,8 @@ dependencies:
     - xformers==0.0.20 # GPU
     - git+https://github.com/facebookincubator/submitit
     - --extra-index-url https://pypi.nvidia.com
-    - cuml-cu11 # GPU
+    - cuml-cu11==23.04 # GPU
+    - --extra-index-url https://pypi.nvidia.com
     - kornia==0.7.2
     - pypng==0.20220715.0
     - triangle==20200424

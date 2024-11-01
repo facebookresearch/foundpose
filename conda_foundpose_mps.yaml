@@ -1,4 +1,4 @@
-name: foundpose_cpu
+name: foundpose_mps
 channels:
   - defaults
   - pytorch

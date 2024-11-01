@@ -60,9 +60,9 @@ git clone --recurse-submodules https://github.com/facebookresearch/foundpose
 cd foundpose
 ```
 
-Setup the [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) environment for CPU or MacOSX:
+Setup the [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) environment for MacOSX (MPS):
 ```bash
-conda env create -f conda_foundpose_cpu.yaml
+conda env create -f conda_foundpose_mps.yaml
 ```
 For CUDA (GPU support):
 ```bash
@@ -90,7 +90,7 @@ export PYTHONPATH=$REPO_PATH:$REPO_PATH/external/bop_toolkit:$REPO_PATH/external
 
 Activate the conda environment:
 ```bash
-conda activate foundpose_cpu  # or foundpose_gpu
+conda activate foundpose_mps  # or foundpose_gpu
 ```
 
 ### Dataset <a name="dataset"></a>

@@ -198,13 +198,13 @@ def load_object_repre(
     # Convert to the corresponding Python structure.
     repre = FeatureBasedObjectRepre(**repre_dict)
 
-    # Optionally move tensors to GPU.
-    if tensor_device != "cpu":
-
-        def move_to_device(x: torch.Tensor) -> torch.Tensor:
-            return x.to(tensor_device)
-
-        repre = misc.map_fields(move_to_device, repre, only_type=torch.Tensor)
+    # # Optionally move tensors to GPU.
+    # if tensor_device != "cpu":
+    #
+    #     def move_to_device(x: torch.Tensor) -> torch.Tensor:
+    #         return x.to(tensor_device)
+    #
+    #     repre = misc.map_fields(move_to_device, repre, only_type=torch.Tensor)
 
     return repre
 

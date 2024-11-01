@@ -18,8 +18,6 @@ from utils import renderer_base, json_util
 
 logger: logging.Logger = logging.get_logger()
 
-import ipdb
-
 # Colors of the left (0) and right (1) hands.
 DEFAULT_FG_OPACITY = 0.5
 DEFAULT_BG_OPACITY = 0.7
@@ -51,10 +49,7 @@ def write_text_on_image(
     im_pil = Image.fromarray(im)
 
     # Load the font.
-    font = None
-    font_path = fs.join(fs.dirname(__file__), "../resources/font_droid_sans_mono.ttf")
-    with fs.open(font_path, "rb") as f:
-        font = ImageFont.truetype(f, size)
+    font = ImageFont.load("arial.pil")
 
     # Clip the text location to the image.
     im_size = (im.shape[1], im.shape[0])
@@ -144,7 +139,6 @@ def vis_meshes(
                 renderer_base.RenderType.MASK,
             ],
         )
-        ipdb.set_trace()
         # Alpha channel of the rendered meshes.
         fg_mask = np.expand_dims(
             renderings[renderer_base.RenderType.MASK] > 0, axis=-1
