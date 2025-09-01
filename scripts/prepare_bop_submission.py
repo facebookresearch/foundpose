@@ -1,3 +1,5 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+#!/usr/bin/env python3
 
 # Read the json files that are the output of the infer.py script.
 import os

@@ -1,3 +1,4 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
 #!/usr/bin/env python3
 
 from typing import Tuple
